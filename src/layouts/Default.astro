@@ -6,7 +6,7 @@ interface LayoutProps {
   description: string
 }
 
-const { title, description } = Astro.props
+const { title, description } = Astro.props as LayoutProps
 ---
 
 <!doctype html>
@@ -16,6 +16,11 @@ const { title, description } = Astro.props
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title} | Diego Tech</title>
     <meta name="description" content={description} />
+    <meta name="author" content="Diego Tech" />
+    <meta
+      name="keywords"
+      content="Blockchain, WebSite, Diego, Tech, Astro, Tailwindcss, React"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
