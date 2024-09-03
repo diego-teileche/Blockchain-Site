@@ -5,12 +5,7 @@ const Header = () => {
     <header className="sticky top-0 z-10 bg-zinc-900/50 backdrop-blur-lg">
       <div className="container">
         <div className="flex h-20 items-center justify-between md:h-24">
-          <div className="relative z-0 inline-flex">
-            <img
-              src="/logo.avif"
-              className="absolute left-1/2 top-1/2 -z-10 w-[calc(100%+7px)] max-w-none -translate-x-1/2 -translate-y-1/2 brightness-[4%] saturate-[10%]"
-              alt="Blockforge Logo"
-            />
+          <div>
             <img
               src="/logo.avif"
               className="relative sm:size-10 md:size-14"
