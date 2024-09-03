@@ -5,6 +5,7 @@ export default {
   semi: false,
   tailwindConfig: "./tailwind.config.mjs",
   tailwindAttributes: ["className"],
+  tailwindFunctions: ["tw"],
   overrides: [
     {
       files: "*.astro",
