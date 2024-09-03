@@ -4,7 +4,11 @@ const Header = () => {
       <div className="container">
         <div className="flex h-24 items-center justify-between md:h-28">
           <div>
-            <img src="/assets/images/logo.svg" alt="Blockforge Logo" />
+            <img
+              src="/logo.avif"
+              className="size-14 drop-shadow-lg"
+              alt="Blockforge Logo"
+            />
           </div>
 
           <div className="flex items-center gap-4">
