@@ -1,4 +1,4 @@
-import CutCornerButton from "@/components/CutCornerButton"
+import CutCornerButton from "@components/CutCornerButton"
 
 const Header = () => {
   return (
