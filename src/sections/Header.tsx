@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-10 bg-zinc-900/50 backdrop-blur-lg">
       <div className="container">
-        <div className="flex h-20 items-center justify-between md:h-24">
+        <div className="flex h-16 items-center justify-between md:h-20">
           <div>
             <img
               src="/logo.avif"
