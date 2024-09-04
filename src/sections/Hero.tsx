@@ -29,7 +29,7 @@ const Hero = () => {
                 <Hexagon className="size-[1800px]" />
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                <Circle className="absolute -top-[900px] left-[200px]">
+                <Circle className="absolute -top-[900px] left-[250px]">
                   <img
                     src="/assets/images/cube.png"
                     className="size-[140px]"
