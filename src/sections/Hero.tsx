@@ -1,3 +1,4 @@
+import Circle from "@components/Circle"
 import CutCornerButton from "@components/CutCornerButton"
 import Hexagon from "@components/Hexagon"
 
@@ -23,6 +24,27 @@ const Hero = () => {
             <div className="relative z-0 mt-24 inline-flex">
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <Hexagon className="size-[1100px]" />
+              </div>
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <Hexagon className="size-[1800px]" />
+              </div>
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <Circle className="absolute -top-[900px] left-[200px]">
+                  <img
+                    src="/assets/images/cube.png"
+                    className="size-[140px]"
+                    alt="Cube 3D Image"
+                  />
+                </Circle>
+              </div>
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <Circle className="absolute left-[200px] top-[270px]">
+                  <img
+                    src="/assets/images/cuboid.png"
+                    className="size-[140px]"
+                    alt="Cuboid 3D Image"
+                  />
+                </Circle>
               </div>
               <img
                 src="/assets/images/icosahedron.png"
