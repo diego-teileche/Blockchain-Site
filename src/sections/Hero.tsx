@@ -46,6 +46,15 @@ const Hero = () => {
                   />
                 </Circle>
               </div>
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <Circle className="absolute -left-[600px] -top-[80px]">
+                  <img
+                    src="/assets/images/torus.png"
+                    className="size-[140px]"
+                    alt="Torus 3D Image"
+                  />
+                </Circle>
+              </div>
               <img
                 src="/assets/images/icosahedron.png"
                 className="absolute left-1/2 top-1/2 -z-10 w-[calc(100%+100px)] max-w-none -translate-x-1/2 -translate-y-1/2 brightness-[4%] hue-rotate-[240deg] saturate-[10%]"
@@ -57,6 +66,15 @@ const Hero = () => {
                 alt="Iconsaheadron 3D Image"
               />
             </div>
+          </div>
+
+          <div className="mt-40 flex flex-col items-center justify-center gap-4 md:mt-80">
+            <div className="inline-flex h-10 w-5 justify-center rounded-full pt-2 outline outline-[6px] outline-fuchsia-500/10">
+              <div className="h-3 w-1 rounded-full bg-fuchsia-500"></div>
+            </div>
+            <p className="font-extrabold uppercase tracking-wider text-zinc-500">
+              Scroll to learn more
+            </p>
           </div>
         </div>
       </section>
