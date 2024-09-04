@@ -11,13 +11,13 @@ const FeaturesGrid = () => {
   return (
     <section className="overflow-x-clip py-24">
       <div className="container">
-        <div className="flex flex-col gap-56 md:gap-48">
-          <div className="grid grid-cols-3 gap-8">
+        <div className="flex flex-col gap-56 md:gap-48 lg:gap-80">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             <div className="col-span-2">
-              <h2 className="font-heading text-4xl font-black md:text-5xl">
+              <h2 className="font-heading text-4xl font-black md:text-5xl lg:text-6xl">
                 Empowering the future of blackchain
               </h2>
-              <p className="mt-8 text-xl text-zinc-400">
+              <p className="mt-8 text-xl text-zinc-400 lg:text-2xl">
                 Blockforge provides robust and secure infrastructure to support
                 the next generation of decentralized applications
               </p>
@@ -36,7 +36,7 @@ const FeaturesGrid = () => {
                 <TextButton>Learn More</TextButton>
               </div>
             </div>
-            <div>
+            <div className="hidden md:block">
               <div className="relative z-0 inline-flex">
                 <img
                   src="/assets/images/torus-knot.png"
@@ -52,8 +52,8 @@ const FeaturesGrid = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-8">
-            <div className="relative">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="relative hidden md:block">
               <div className="absolute right-0 z-0">
                 <img
                   src="/assets/images/cone.png"
@@ -68,10 +68,10 @@ const FeaturesGrid = () => {
               </div>
             </div>
             <div className="col-span-2">
-              <h2 className="font-heading text-4xl font-black md:text-5xl">
+              <h2 className="font-heading text-4xl font-black md:text-5xl lg:text-6xl">
                 Blockforge leads the way
               </h2>
-              <div className="mt-6 flex flex-col gap-6 text-xl text-zinc-400">
+              <div className="mt-6 flex flex-col gap-6 text-xl text-zinc-400 lg:text-2xl">
                 <p>
                   Blockforge is dedicated to supporting the evolution of Web3
                   applications by delivering the necessary infrastructure and
