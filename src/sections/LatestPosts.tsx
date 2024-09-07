@@ -1,27 +1,31 @@
+import Card from "@components/Card"
+
 const LatestPosts = () => {
   return (
-    <section>
+    <section className="py-60">
       <div className="container">
-        <h2>Your portal to everything blockchain</h2>
-        <p>
+        <h2 className="text-center font-heading text-4xl font-black">
+          Your portal to everything blockchain
+        </h2>
+        <p className="mt-8 text-center text-xl text-zinc-400">
           Keep up with the newest trends, updates, and insights in the
           blockchain world, updated weekly
         </p>
 
-        <div>
+        <div className="mt-16 flex flex-col gap-8">
           {[...new Array(4)].fill(0).map((item, itemIndex) => (
-            <div key={itemIndex}>
-              <div>Technology</div>
-              <h3>Regulatory Challenges Facing Blockchain</h3>
-              <p>
+            <Card key={itemIndex} buttonText="Read More">
+              <div className="inline-flex rounded-full bg-fuchsia-500/15 px-3 py-1.5 font-heading text-xs font-extrabold uppercase tracking-wider text-fuchsia-500">
+                Technology
+              </div>
+              <h3 className="mt-4 font-heading text-3xl font-black">
+                Regulatory Challenges Facing Blockchain
+              </h3>
+              <p className="mt-6 text-lg text-zinc-400">
                 Understanding the regulatory landscape surronding blockchain and
                 what it means for the future of this technology
               </p>
-              <div>
-                <button>Read more</button>
-                <div>arrow</div>
-              </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
