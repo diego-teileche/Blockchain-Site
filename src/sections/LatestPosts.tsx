@@ -4,12 +4,22 @@ import { getPostColorFromCategory } from "@utils/postUtils"
 import Tag from "@components/Tag"
 import CutCornerButton from "@components/CutCornerButton"
 import { twMerge } from "tailwind-merge"
+import { useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
 
 const LatestPosts = (props: { latestPosts: CollectionEntry<"blog">[] }) => {
   const { latestPosts } = props
+  const targetRef = useRef(null)
+
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start end", "start center"],
+  })
+
+  const marginTop = useTransform(scrollYProgress, [0, 1], [0, 64])
 
   return (
-    <section className="py-60">
+    <section className="py-24 md:py-60">
       <div className="container">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-center font-heading text-4xl font-black md:text-5xl lg:text-6xl">
@@ -45,7 +55,13 @@ const LatestPosts = (props: { latestPosts: CollectionEntry<"blog">[] }) => {
             )}
           </div>
 
-          <div className="mt-16 hidden flex-col gap-8 md:flex">
+          <motion.div
+            ref={targetRef}
+            className="mt-16 hidden flex-col gap-8 md:flex"
+            style={{
+              marginTop,
+            }}
+          >
             {latestPosts.map(
               ({ data: { title, description, category } }, postIndex) => (
                 <Card
@@ -66,7 +82,7 @@ const LatestPosts = (props: { latestPosts: CollectionEntry<"blog">[] }) => {
                 </Card>
               ),
             )}
-          </div>
+          </motion.div>
         </div>
 
         <div className="mt-48 flex justify-center md:mt-32">
