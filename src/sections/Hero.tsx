@@ -6,13 +6,34 @@ import Hexagon from "@components/Hexagon"
 
 const Hero = () => {
   const icosaheadronRef = useRef(null)
+  const cubeRef = useRef(null)
+  const torusRef = useRef(null)
+  const cuboidRef = useRef(null)
+
+  const { scrollYProgress: cuboidScrollYProgress } = useScroll({
+    target: cuboidRef,
+    offset: ["start end", "end start"],
+  })
+
+  const { scrollYProgress: torusScrollYProgress } = useScroll({
+    target: torusRef,
+    offset: ["start end", "end start"],
+  })
+
+  const { scrollYProgress: cubeScrollYProgress } = useScroll({
+    target: cubeRef,
+    offset: ["start end", "end start"],
+  })
 
   const { scrollYProgress } = useScroll({
     target: icosaheadronRef,
     offset: ["start end", "end start"],
   })
 
-  const iconsaheadronRotate = useTransform(scrollYProgress, [0, 1], [30, -45])
+  const iconsaheadronRotate = useTransform(scrollYProgress, [0, 1], [30, -15])
+  const cubeRotate = useTransform(cubeScrollYProgress, [0, 1], [100, -45])
+  const torusRotate = useTransform(torusScrollYProgress, [0, 1], [20, -20])
+  const cuboidRotate = useTransform(cuboidScrollYProgress, [0, 1], [20, -20])
 
   return (
     <main>
@@ -41,27 +62,39 @@ const Hero = () => {
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <Circle className="absolute -top-[900px] left-[250px]">
-                  <img
+                  <motion.img
                     src="/assets/images/cube.png"
+                    ref={cubeRef}
                     className="size-[140px]"
-                    alt="Cube 3D Image"
+                    style={{
+                      rotate: cubeRotate,
+                    }}
+                    alt="Cube 3D Image | Diego Tech"
                   />
                 </Circle>
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <Circle className="absolute left-[200px] top-[270px]">
-                  <img
+                  <motion.img
                     src="/assets/images/cuboid.png"
+                    ref={cuboidRef}
                     className="size-[140px]"
+                    style={{
+                      rotate: cuboidRotate,
+                    }}
                     alt="Cuboid 3D Image"
                   />
                 </Circle>
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <Circle className="absolute -left-[600px] -top-[80px]">
-                  <img
+                  <motion.img
                     src="/assets/images/torus.png"
+                    ref={torusRef}
                     className="size-[140px]"
+                    style={{
+                      rotate: torusRotate,
+                    }}
                     alt="Torus 3D Image"
                   />
                 </Circle>
