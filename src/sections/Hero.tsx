@@ -61,7 +61,7 @@ const Hero = () => {
                 <Hexagon className="size-[1800px]" />
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                <Circle className="absolute -top-[900px] left-[250px]">
+                <Circle className="absolute -top-[900px] left-[250px]" animate>
                   <motion.img
                     src="/assets/images/cube.png"
                     ref={cubeRef}
@@ -74,7 +74,7 @@ const Hero = () => {
                 </Circle>
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                <Circle className="absolute left-[200px] top-[270px]">
+                <Circle className="absolute left-[200px] top-[270px]" animate>
                   <motion.img
                     src="/assets/images/cuboid.png"
                     ref={cuboidRef}
