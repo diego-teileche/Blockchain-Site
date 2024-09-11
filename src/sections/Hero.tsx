@@ -127,7 +127,19 @@ const Hero = () => {
 
           <div className="mt-40 flex flex-col items-center justify-center gap-4 md:mt-80">
             <div className="inline-flex h-10 w-5 justify-center rounded-full pt-2 outline outline-[6px] outline-fuchsia-500/10">
-              <div className="h-3 w-1 rounded-full bg-fuchsia-500"></div>
+              <motion.div
+                animate={{
+                  translateY: 12,
+                  opacity: 0.2,
+                }}
+                transition={{
+                  duration: 2,
+                  ease: "linear",
+                  repeat: Infinity,
+                  repeatType: "loop",
+                }}
+                className="h-3 w-1 rounded-full bg-fuchsia-500"
+              ></motion.div>
             </div>
             <p className="font-extrabold uppercase tracking-wider text-zinc-500">
               Scroll to learn more
