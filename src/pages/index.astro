@@ -8,6 +8,7 @@ import LatestPosts from "@sections/LatestPosts"
 import Testimonials from "@sections/Testimonials"
 import { getCollection } from "astro:content"
 import CallToAction from "@sections/CallToAction"
+import Footer from "@sections/Footer"
 
 const posts = await getCollection("blog")
 const latestPosts = posts
@@ -30,4 +31,5 @@ const latestPosts = posts
 	<LatestPosts latestPosts={latestPosts} />
 	<Testimonials />
 	<CallToAction />
+	<Footer />
 </DefaultLayout>
