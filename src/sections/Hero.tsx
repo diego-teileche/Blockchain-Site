@@ -1,8 +1,19 @@
+import { useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
 import Circle from "@components/Circle"
 import CutCornerButton from "@components/CutCornerButton"
 import Hexagon from "@components/Hexagon"
 
 const Hero = () => {
+  const icosaheadronRef = useRef(null)
+
+  const { scrollYProgress } = useScroll({
+    target: icosaheadronRef,
+    offset: ["start end", "end start"],
+  })
+
+  const iconsaheadronRotate = useTransform(scrollYProgress, [0, 1], [30, -45])
+
   return (
     <main>
       <section className="overflow-x-clip py-24 md:py-52">
@@ -55,16 +66,24 @@ const Hero = () => {
                   />
                 </Circle>
               </div>
-              <img
-                src="/assets/images/icosahedron.png"
-                className="absolute left-1/2 top-1/2 -z-10 w-[calc(100%+100px)] max-w-none -translate-x-1/2 -translate-y-1/2 brightness-[4%] hue-rotate-[240deg] saturate-[10%]"
-                alt="Iconsaheadron 3D Image"
-              />
-              <img
-                src="/assets/images/icosahedron.png"
-                className="w-[500px]"
-                alt="Iconsaheadron 3D Image"
-              />
+              <motion.div
+                ref={icosaheadronRef}
+                className="inline-flex"
+                style={{
+                  rotate: iconsaheadronRotate,
+                }}
+              >
+                <img
+                  src="/assets/images/icosahedron.png"
+                  className="absolute left-1/2 top-1/2 -z-10 w-[calc(100%+100px)] max-w-none -translate-x-1/2 -translate-y-1/2 brightness-[4%] hue-rotate-[240deg] saturate-[10%]"
+                  alt="Iconsaheadron 3D Image"
+                />
+                <img
+                  src="/assets/images/icosahedron.png"
+                  className="w-[500px]"
+                  alt="Iconsaheadron 3D Image"
+                />
+              </motion.div>
             </div>
           </div>
 
