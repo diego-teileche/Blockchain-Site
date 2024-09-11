@@ -41,7 +41,7 @@ const Footer = () => {
   return (
     <footer className="bg-zinc-950 py-24">
       <div className="container">
-        <div>
+        <div className="flex items-center justify-between">
           <div>
             <img
               src="/assets/images/logo.svg"
@@ -49,24 +49,32 @@ const Footer = () => {
             />
           </div>
 
-          <nav className="hidden">
-            <a href="#">Home</a>
-            <a href="#">Blog</a>
-            <a href="#">Careers</a>
-            <a href="#">Contact</a>
+          <nav className="hidden gap-12 font-heading font-black text-zinc-500 md:flex">
+            <a href="#" className="hover:text-zinc-400">
+              Home
+            </a>
+            <a href="#" className="hover:text-zinc-400">
+              Blog
+            </a>
+            <a href="#" className="hover:text-zinc-400">
+              Careers
+            </a>
+            <a href="#" className="hover:text-zinc-400">
+              Contact
+            </a>
           </nav>
         </div>
 
-        <div className="mt-12">
+        <div className="mt-12 items-center justify-between md:mt-48 md:flex">
           <p className="text-zinc-400">
             &copy; 2024 Blockforge. All rights reserved.
           </p>
 
-          <div className="mt-4 flex gap-6">
+          <div className="mt-4 flex gap-6 md:mt-0">
             {socialIcons.map((icon, iconIndex) => (
               <div
                 key={iconIndex}
-                className="inline-flex size-10 items-center justify-center rounded-full bg-zinc-800"
+                className="inline-flex size-10 cursor-pointer items-center justify-center rounded-full bg-zinc-800"
               >
                 {icon.icon}
               </div>
