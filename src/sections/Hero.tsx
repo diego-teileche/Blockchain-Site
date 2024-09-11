@@ -37,7 +37,7 @@ const Hero = () => {
 
   return (
     <main>
-      <section className="overflow-x-clip py-24 md:py-52">
+      <section className="overflow-x-clip py-24 md:py-36">
         <div className="container">
           <p className="text-center font-extrabold uppercase tracking-wider text-zinc-500">
             Introducing Blockforge
@@ -55,10 +55,15 @@ const Hero = () => {
           <div className="mt-24 flex justify-center">
             <div className="relative z-0 mt-24 inline-flex">
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                <Hexagon className="size-[1100px]" />
+                <Hexagon className="size-[1100px]" size={1100} />
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                <Hexagon className="size-[1800px]" />
+                <Hexagon
+                  className="size-[1800px]"
+                  size={1800}
+                  reverse
+                  duration={60}
+                />
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <Circle className="absolute -top-[900px] left-[250px]" animate>
