@@ -1,7 +1,8 @@
 import CutCornerButton from "@components/CutCornerButton"
 import Hexagon from "@components/Hexagon"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { twMerge } from "tailwind-merge"
+import { AnimatePresence, motion } from "framer-motion"
 
 const navLinks = [
   {
@@ -24,6 +25,14 @@ const navLinks = [
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "auto"
+    }
+  }, [isOpen])
 
   return (
     <>
@@ -68,32 +77,48 @@ const Header = () => {
         </div>
       </header>
 
-      {isOpen && (
-        <div className="fixed left-0 top-0 z-30 size-full bg-zinc-900">
-          <div className="absolute inset-2 z-0 mt-20 rounded-md bg-zinc-800">
-            <div className="absolute left-full top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2">
-              <Hexagon size={700} />
-            </div>
-            <div className="absolute left-full top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2">
-              <Hexagon size={1100} />
-            </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed left-0 top-0 z-30 size-full bg-zinc-900"
+          >
+            <div className="absolute inset-2 z-0 mt-20 rounded-md bg-zinc-800 md:mt-24">
+              <div className="absolute left-full top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2">
+                <Hexagon size={700} />
+              </div>
+              <div className="absolute left-full top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2">
+                <Hexagon size={1100} />
+              </div>
 
-            <div className="flex h-full items-center justify-center">
-              <nav className="flex flex-col items-center gap-12">
-                {navLinks.map(({ title, href }) => (
-                  <a
-                    key={title}
-                    href={href}
-                    className="font-heading text-4xl font-black text-zinc-500 transition-colors duration-300 hover:text-zinc-300"
-                  >
-                    {title}
-                  </a>
-                ))}
-              </nav>
+              <div className="flex h-full items-center justify-center">
+                <nav className="flex flex-col items-center gap-12 md:gap-16">
+                  {navLinks.map(({ title, href }, index) => (
+                    <motion.a
+                      key={title}
+                      href={href}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.5,
+                        ease: "linear",
+                        delay: 0.25 * index,
+                      }}
+                    >
+                      <span className="font-heading text-4xl font-black text-zinc-500 transition-colors duration-300 hover:text-zinc-300 md:text-5xl lg:text-6xl">
+                        {title}
+                      </span>
+                    </motion.a>
+                  ))}
+                </nav>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
