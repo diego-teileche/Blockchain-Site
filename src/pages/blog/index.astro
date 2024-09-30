@@ -4,7 +4,6 @@ import CutCornerButton from "@components/CutCornerButton"
 import Hexagon from "@components/Hexagon"
 import Tag from "@components/Tag"
 import DefaultLayout from "@layouts/Default.astro"
-import Header from "@sections/Header"
 import { getPostColorFromCategory } from "@utils/postUtils"
 import { getCollection } from "astro:content"
 import { twMerge } from "tailwind-merge"
@@ -21,8 +20,6 @@ const latestPost = posts[0]
 	title="Blockforge"
 	description="Blockforge - This is a super modern Blockchain Site built by Diego Tech by using Astro.js"
 >
-	<Header client:load />
-
 	<section class="relative overflow-x-clip py-60">
 		<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
 			<Hexagon size={800} duration={30} client:load />
@@ -38,10 +35,14 @@ const latestPost = posts[0]
 				>
 					Latest Post
 				</p>
-				<h1 class="mt-4 text-center font-heading text-7xl font-black">
+				<h1
+					class="mt-4 text-center font-heading text-5xl font-black md:text-6xl lg:text-7xl"
+				>
 					{latestPost.data.title}
 				</h1>
-				<p class="mx-auto mt-6 max-w-xl text-center text-2xl text-zinc-400">
+				<p
+					class="mx-auto mt-6 max-w-xl text-center text-xl text-zinc-400 md:text-2xl"
+				>
 					{latestPost.data.description}
 				</p>
 				<div class="mt-10 flex justify-center">
@@ -53,10 +54,10 @@ const latestPost = posts[0]
 		</div>
 	</section>
 
-	<section class="pb-[1000px]">
+	<section class="bg-zinc-900/30 py-32 backdrop-blur-sm">
 		<div class="container">
-			<div class="grid grid-cols-2 gap-8">
-				<div class="flex flex-col gap-12">
+			<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+				<div class="flex flex-col gap-8 lg:gap-12">
 					{
 						posts.map(
 							({ data: { category, title, description }, slug }, postIndex) => (
@@ -69,7 +70,9 @@ const latestPost = posts[0]
 										duration: 0.5,
 										ease: "easeIn",
 									}}
-									className={twMerge(postIndex % 2 === 0 ? "" : "hidden")}
+									className={twMerge(
+										postIndex % 2 === 0 ? "" : "block md:hidden"
+									)}
 									client:load
 								>
 									<Card
@@ -90,7 +93,7 @@ const latestPost = posts[0]
 					}
 				</div>
 
-				<div class="mt-24 flex flex-col gap-12">
+				<div class="mt-24 hidden flex-col gap-8 md:flex lg:gap-12">
 					{
 						posts.map(
 							({ data: { category, title, description }, slug }, postIndex) => (
