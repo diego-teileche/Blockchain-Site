@@ -3,11 +3,13 @@ import CutCornerButton from "@components/CutCornerButton"
 import Hexagon from "@components/Hexagon"
 import DefaultLayout from "@layouts/Default.astro"
 import Header from "@sections/Header"
-// import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content"
 
-// const posts = (await getCollection('blog')).sort(
-// 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-// );
+const posts = (await getCollection("blog")).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+)
+
+const latestPost = posts[0]
 ---
 
 <DefaultLayout
@@ -16,12 +18,12 @@ import Header from "@sections/Header"
 >
 	<Header client:load />
 
-	<section class="relative py-60">
+	<section class="relative overflow-x-clip py-60">
 		<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-			<Hexagon size={800} />
+			<Hexagon size={800} duration={30} client:load />
 		</div>
 		<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-			<Hexagon size={1200} />
+			<Hexagon size={1200} duration={50} reverse client:load />
 		</div>
 
 		<div class="container">
@@ -32,14 +34,15 @@ import Header from "@sections/Header"
 					Latest Post
 				</p>
 				<h1 class="mt-4 text-center font-heading text-7xl font-black">
-					Regulatory Challenges Facing Blockchain
+					{latestPost.data.title}
 				</h1>
 				<p class="mx-auto mt-6 max-w-xl text-center text-2xl text-zinc-400">
-					Understanding the regulatory landscape surrounding blockchain and what
-					it means for the future of this technology
+					{latestPost.data.description}
 				</p>
 				<div class="mt-10 flex justify-center">
-					<CutCornerButton>Read More</CutCornerButton>
+					<a href={`/blog/${latestPost.slug}`}>
+						<CutCornerButton>Read More</CutCornerButton>
+					</a>
 				</div>
 			</div>
 		</div>
