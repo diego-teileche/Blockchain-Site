@@ -1,7 +1,49 @@
 ---
+import CutCornerButton from "@components/CutCornerButton"
+import Hexagon from "@components/Hexagon"
+import DefaultLayout from "@layouts/Default.astro"
+import Header from "@sections/Header"
 // import { getCollection } from 'astro:content';
 
 // const posts = (await getCollection('blog')).sort(
 // 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 // );
 ---
+
+<DefaultLayout
+	title="Blockforge"
+	description="Blockforge - This is a super modern Blockchain Site built by Diego Tech by using Astro.js"
+>
+	<Header client:load />
+
+	<section class="relative py-60">
+		<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+			<Hexagon size={800} />
+		</div>
+		<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+			<Hexagon size={1200} />
+		</div>
+
+		<div class="container">
+			<div class="mx-auto max-w-3xl">
+				<p
+					class="text-center font-extrabold uppercase tracking-wider text-zinc-500"
+				>
+					Latest Post
+				</p>
+				<h1 class="mt-4 text-center font-heading text-7xl font-black">
+					Regulatory Challenges Facing Blockchain
+				</h1>
+				<p class="mx-auto mt-6 max-w-xl text-center text-2xl text-zinc-400">
+					Understanding the regulatory landscape surrounding blockchain and what
+					it means for the future of this technology
+				</p>
+				<div class="mt-10 flex justify-center">
+					<CutCornerButton>Read More</CutCornerButton>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div>blog diegooo</div>
+</DefaultLayout>
