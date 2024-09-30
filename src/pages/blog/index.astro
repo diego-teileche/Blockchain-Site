@@ -1,8 +1,11 @@
 ---
+import Card from "@components/Card"
 import CutCornerButton from "@components/CutCornerButton"
 import Hexagon from "@components/Hexagon"
+import Tag from "@components/Tag"
 import DefaultLayout from "@layouts/Default.astro"
 import Header from "@sections/Header"
+import { getPostColorFromCategory } from "@utils/postUtils"
 import { getCollection } from "astro:content"
 
 const posts = (await getCollection("blog")).sort(
@@ -48,5 +51,30 @@ const latestPost = posts[0]
 		</div>
 	</section>
 
-	<div>blog diegooo</div>
+	<section class="pb-[1000px]">
+		<div class="container">
+			<div class="grid grid-cols-2 gap-8">
+				<div class="flex flex-col gap-12">
+					{
+						posts.map(({ data: { category, title, description }, slug }) => (
+							<a href={`/blog/${slug}`}>
+								<Card
+									buttonText="Read More"
+									color={getPostColorFromCategory(category)}
+								>
+									<Tag color={getPostColorFromCategory(category)}>
+										{category}
+									</Tag>
+									<h2 class="mt-4 font-heading text-3xl font-black">{title}</h2>
+									<p class="mt-6 text-lg text-zinc-400">{description}</p>
+								</Card>
+							</a>
+						))
+					}
+				</div>
+
+				<div></div>
+			</div>
+		</div>
+	</section>
 </DefaultLayout>
