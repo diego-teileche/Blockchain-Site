@@ -1,9 +1,13 @@
 ---
+import CallToAction from "@sections/CallToAction"
+import Footer from "@sections/Footer"
+import Header from "@sections/Header"
+import Testimonials from "@sections/Testimonials"
 import "@styles/global.css"
 
 interface LayoutProps {
-  title: string
-  description: string
+	title: string
+	description: string
 }
 
 const { title, description } = Astro.props as LayoutProps
@@ -11,25 +15,29 @@ const { title, description } = Astro.props as LayoutProps
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} | Diego Tech</title>
-    <meta name="description" content={description} />
-    <meta name="author" content="Diego Tech" />
-    <meta
-      name="keywords"
-      content="Blockchain, WebSite, Diego, Tech, Astro, Tailwindcss, React"
-    />
-    <link rel="icon" href="/logo.avif" type="image/avif" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <slot />
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title} | Diego Tech</title>
+		<meta name="description" content={description} />
+		<meta name="author" content="Diego Tech" />
+		<meta
+			name="keywords"
+			content="Blockchain, WebSite, Diego, Tech, Astro, Tailwindcss, React"
+		/>
+		<link rel="icon" href="/logo.avif" type="image/avif" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<Header client:load />
+		<slot />
+		<Testimonials client:load />
+		<CallToAction client:load />
+		<Footer />
+	</body>
 </html>

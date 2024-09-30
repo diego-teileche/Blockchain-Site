@@ -1,14 +1,10 @@
 ---
 import Hero from "@sections/Hero"
 import DefaultLayout from "@layouts/Default.astro"
-import Header from "@sections/Header"
 import FeaturesCards from "@sections/FeaturesCards"
 import FeaturesGrid from "@sections/FeaturesGrid"
 import LatestPosts from "@sections/LatestPosts"
-import Testimonials from "@sections/Testimonials"
 import { getCollection } from "astro:content"
-import CallToAction from "@sections/CallToAction"
-import Footer from "@sections/Footer"
 
 const posts = await getCollection("blog")
 const latestPosts = posts
@@ -24,12 +20,8 @@ const latestPosts = posts
 	title="Blockforge"
 	description="Blockforge - This is a super modern Blockchain Site built by Diego Tech by using Astro.js"
 >
-	<Header client:load />
 	<Hero client:load />
 	<FeaturesCards client:load />
 	<FeaturesGrid client:load />
 	<LatestPosts latestPosts={latestPosts} client:load />
-	<Testimonials client:load />
-	<CallToAction client:load />
-	<Footer />
 </DefaultLayout>
