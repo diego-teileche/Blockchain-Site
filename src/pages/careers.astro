@@ -1,21 +1,25 @@
 ---
+import DefaultLayout from "@layouts/Default.astro"
 import Card from "@components/Card"
 import InteriorContent from "@components/InteriorContent.astro"
 import InteriorHero from "@components/InteriorHero.astro"
 import Tag from "@components/Tag"
-import DefaultLayout from "@layouts/Default.astro"
 import {
 	getColorFromPositionCategory,
 	getColorFromPositionType,
 } from "@utils/postUtils"
 import { getCollection, type CollectionEntry } from "astro:content"
+import { motion } from "framer-motion"
 
 const positions = await getCollection("positions")
 
 type Props = CollectionEntry<"positions">
 ---
 
-<DefaultLayout>
+<DefaultLayout
+	title="Careers"
+	description="We are always looking for talented individuals passionate about building blockchain products that make a difference | Diego Tech"
+>
 	<InteriorHero>
 		<p
 			class="text-center font-extrabold uppercase tracking-wider text-zinc-500"
@@ -36,19 +40,36 @@ type Props = CollectionEntry<"positions">
 	</InteriorHero>
 
 	<InteriorContent>
-		<div class="pb-[1000px]">
+		<div class="flex flex-col gap-12">
 			{
 				positions.map(
 					({ data: { title, type, description, category, remote } }: Props) => (
-						<Card color={getColorFromPositionCategory(category)}>
-							<div>
-								{remote && <Tag>Remote</Tag>}
-								<Tag color={getColorFromPositionType(type)}>{type}</Tag>
-							</div>
-
-							<h2>{title}</h2>
-							<p>{description}</p>
-						</Card>
+						<motion.a
+							href="/contact"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{
+								once: true,
+								amount: 0.5,
+							}}
+							transition={{
+								duration: 0.5,
+								ease: "easeIn",
+							}}
+							client:load
+						>
+							<Card
+								color={getColorFromPositionCategory(category)}
+								buttonText="Apply now"
+							>
+								<div class="flex items-center gap-3">
+									{remote && <Tag>Remote</Tag>}
+									<Tag color={getColorFromPositionType(type)}>{type}</Tag>
+								</div>
+								<h2 class="mt-6 font-heading text-3xl font-black">{title}</h2>
+								<p class="mt-4 text-xl text-zinc-400">{description}</p>
+							</Card>
+						</motion.a>
 					)
 				)
 			}
