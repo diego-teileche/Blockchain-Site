@@ -1,6 +1,6 @@
 # About the App <img src="public/logo.avif" width="40px" height="40px" align="center" alt="Blockforge Logo | Diego Tech" />
 
-This is a modern Blockchain Site called Blockforge built by `Diego Tech` by using:
+This is a modern [Blockchain Site](https://blockchain-site.pages.dev/) called Blockforge built by `Diego Tech` by using:
 
 - Astro.js
 - React.js
